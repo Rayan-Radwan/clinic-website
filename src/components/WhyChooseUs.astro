@@ -1,0 +1,172 @@
+---
+const reasons = [
+  {
+    icon: "ti-heart-handshake",
+    title: "Trato cercano",
+    text: "Hablamos a pacientes, no a dentistas. Te explicamos cada paso con calma.",
+  },
+  {
+    icon: "ti-device-laptop",
+    title: "Tecnología al día",
+    text: "Instalaciones renovadas y equipos actualizados para tu tranquilidad.",
+  },
+  {
+    icon: "ti-credit-card",
+    title: "Financiación flexible",
+    text: "Planes de pago adaptados a ti, sin sorpresas en el presupuesto.",
+  },
+  {
+    icon: "ti-users",
+    title: "25+ años de confianza",
+    text: "Familias que nos eligen generación tras generación desde 1996.",
+  },
+];
+---
+
+<section class="why" id="por-que-elegirnos">
+  <div class="why-visual">
+    <div class="backdrop-blob"></div>
+    <div class="photo-blob"></div>
+
+    <div class="float-badge b1">
+      <span class="fi"><i class="ti ti-calendar-star"></i></span>
+      <div><b>25+ años</b><span>de experiencia</span></div>
+    </div>
+    <div class="float-badge b2">
+      <span class="fi"><i class="ti ti-mood-smile"></i></span>
+      <div><b>Equipo cercano</b><span>100% dedicado a ti</span></div>
+    </div>
+  </div>
+
+  <div class="why-copy">
+    <span class="tag-pill">
+      <span class="ic"><i class="ti ti-sparkles" style="font-size:11px"></i></span>
+      ¿POR QUÉ ELEGIRNOS?
+    </span>
+
+    <h2 class="why-h">
+      Cuidado dental que se <span class="highlight">nota</span>,
+      <br />dentro y fuera de la consulta
+    </h2>
+
+    <p class="why-p">
+      No somos una consulta más. Somos el equipo al que tus padres ya conocían,
+      cuidando ahora también de ti.
+    </p>
+
+    <ul class="reasons-grid">
+      {reasons.map((r) => (
+        <li class="reason-card">
+          <span class="reason-ic"><i class={`ti ${r.icon}`}></i></span>
+          <h3>{r.title}</h3>
+          <p>{r.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .why{
+    max-width:1240px; margin:0 auto; padding:80px 32px;
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;
+    position:relative;
+  }
+
+  /* ===== VISUAL (mirrors hero-visual, placed on the left this time) ===== */
+  .why-visual{ position:relative; height:460px; order:1; }
+  .backdrop-blob{
+    position:absolute; top:8%; left:4%; width:80%; height:86%;
+    background:var(--pastel); opacity:.55;
+    border-radius:42% 58% 39% 61% / 55% 44% 56% 45%;
+    transform:rotate(5deg); z-index:0;
+  }
+  .photo-blob{
+    position:absolute; top:2%; left:9%; width:74%; height:82%;
+    border-radius:58% 42% 44% 56% / 43% 55% 45% 57%;
+    overflow:hidden; z-index:2;
+    box-shadow:0 30px 50px -18px rgba(20,31,52,.35);
+    background:
+      radial-gradient(circle at 30% 20%, rgba(255,255,255,.4), transparent 45%),
+      linear-gradient(150deg, #cfe2ee 0%, #7ba6c4 55%, #3f6a89 100%);
+    /* swap this background for an <img> once real photography is ready */
+  }
+
+  .float-badge{
+    position:absolute; z-index:3; display:flex; align-items:center; gap:10px;
+    background:var(--white); border-radius:16px; padding:11px 15px;
+    box-shadow:0 16px 30px rgba(20,31,52,.16);
+    animation:bob 6s ease-in-out infinite;
+  }
+  .float-badge.b1{ top:8%; right:-4%; animation-delay:.2s; }
+  .float-badge.b2{ bottom:10%; left:-6%; animation-delay:1s; }
+  @keyframes bob{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-10px); } }
+  @media (prefers-reduced-motion:reduce){ .float-badge{ animation:none; } }
+  .float-badge .fi{
+    width:34px; height:34px; border-radius:10px;
+    background:var(--pastel); color:var(--navy);
+    display:flex; align-items:center; justify-content:center; font-size:16px; flex:none;
+  }
+  .float-badge b{ font-family: var(--font-display); display:block; font-size:12.5px; color:var(--navy-deep); font-weight:700; }
+  .float-badge span{ font-family: var(--font-display); font-size:10.5px; color:var(--warm-gray); font-weight:600; }
+
+  /* ===== COPY ===== */
+  .why-copy{ order:2; }
+
+  .tag-pill{
+    font-family: var(--font-display); display:inline-flex; align-items:center; gap:8px;
+    background:var(--warm-gray-20, rgba(168,162,158,.15));
+    padding:8px 16px 8px 8px; border-radius:999px;
+    font-size:11.5px; font-weight:500; letter-spacing:.8px; color:var(--navy);
+    margin-bottom:24px;
+  }
+  .tag-pill .ic{
+    width:22px; height:22px; border-radius:50%; background:var(--pastel);
+    display:flex; align-items:center; justify-content:center; font-size:12px;
+  }
+
+  .why-h{
+    font-family: var(--font-serif); font-weight:500; letter-spacing:-1.2px;
+    font-size:clamp(28px,3.2vw,40px); line-height:1.16;
+    color:var(--navy-deep); margin:0 0 18px;
+  }
+  .why-h .highlight{ color:var(--pastel-deep); }
+
+  .why-p{
+    font-family:var(--font-serif); font-size:16px; line-height:1.65;
+    color:#5b6577; max-width:440px; margin:0 0 36px;
+  }
+
+  .reasons-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:18px;
+    margin:0; padding:0;
+  }
+  .reason-card{
+    background:var(--white); border:1px solid rgba(30,47,77,.08);
+    border-radius:20px; padding:22px 20px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .reason-card:hover{ transform:translateY(-4px); box-shadow:0 16px 32px rgba(30,47,77,.1); }
+  .reason-ic{
+    width:40px; height:40px; border-radius:12px;
+    background:var(--navy); color:var(--white);
+    display:flex; align-items:center; justify-content:center;
+    font-size:19px; margin-bottom:14px;
+  }
+  .reason-card h3{
+    font-family: var(--font-display); font-size:15px; font-weight:750;
+    color:var(--navy-deep); margin:0 0 6px;
+  }
+  .reason-card p{
+    font-family: var(--font-serif); font-size:13px; line-height:1.55;
+    color:var(--warm-gray); margin:0;
+  }
+
+  @media (max-width:980px){
+    .why{ grid-template-columns:1fr; gap:40px; }
+    .why-visual{ order:1; height:380px; max-width:420px; margin:0 auto; }
+    .why-copy{ order:2; }
+    .why-p{ max-width:none; }
+    .reasons-grid{ grid-template-columns:1fr; }
+  }
+</style>
