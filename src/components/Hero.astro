@@ -1,0 +1,163 @@
+<section class="hero">
+  <div class="hero-copy">
+    <span class="tag-pill">
+      <span class="ic"><i class="ti ti-sparkles" style="font-size:11px"></i></span>
+      CLÍNICA DENTAL · DESDE 1996
+    </span>
+
+    <h1 class="hero-h">
+      <span class="wrap-line">
+        Cuidamos tu sonrisa        
+      </span>
+      <span class="wrap-line">con la <span class="highlight"> cercanía </span> de siempre </span>
+      <span class="wrap-line"> y la <span class="strong">tecnología</span> de hoy </span>
+    </h1>
+
+    <p class="hero-p">
+      Más de 25 años acompañando a familias con tratamientos personalizados, 
+      instalaciones renovadas y un equipo que te conoce por tu nombre.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#contacto" class="btn-primary">
+        Pide cita por WhatsApp  <span class="go"><i class="ti ti-arrow-up-right"></i></span>
+      </a>
+      <a href="#equipo" class="btn-play">
+        <span class="circle"><i class="ti ti-player-play-filled"></i></span>
+        Conocer la clínica
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="backdrop-blob"></div>
+    <div class="photo-blob"></div>
+
+    <div class="float-badge b1">
+      <span class="fi"><i class="ti ti-calendar-check"></i></span>
+      <div><b>Primera visita </b><span>diagnóstico gratuito </span></div>
+    </div>
+    <div class="float-badge b2">
+      <span class="fi"><i class="ti ti-star-filled"></i></span>
+      <div><b>4.9 / 5</b><span>Valoración pacientes</span></div>
+    </div>
+  </div>
+</section>
+
+
+
+<style>
+  .hero{
+    max-width:1240px; margin:0 auto; padding:38px 32px 20px;
+    display:grid; grid-template-columns:1fr 0.92fr; gap:20px; align-items:center;
+    position:relative;
+  }
+
+  .tag-pill{
+    font-family: var(--font-display); display:inline-flex; align-items:center; gap:8px;
+    background:var(--warm-gray-20);
+    padding:8px 16px 8px 8px; border-radius:999px;
+    font-size:11.5px; font-weight:500; letter-spacing:.8px; color:var(--navy);
+    margin-bottom:24px;
+  }
+ 
+
+  .hero-h{
+    font-family: var(--font-serif); font-weight:500; letter-spacing:-1.6px; font-size:clamp(36px,4.4vw,54px);
+    line-height:1.06; color:var(--navy-deep); margin:0 0 22px;
+  }
+  .hero-h .wrap-line{ display:block; position:relative; }
+ 
+
+  .hero-p{
+    font-family:var(--font-serif); font-size:16.5px; line-height:1.65;
+    color:#5b6577; max-width:420px; margin:0 0 30px;
+  }
+
+  .hero-h .highlight{
+  color: var(--pastel-deep);
+}
+
+.hero-h .strong{
+  font-weight: 900;
+  color: var(--color-navy);
+}
+
+  .hero-ctas{ display:flex; align-items:center; gap:18px; margin-bottom:38px; flex-wrap:wrap; }
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--navy); color:var(--white);
+    padding:15px 12px 15px 26px; border-radius:999px;
+    font-size:14.5px; font-weight:700;
+    box-shadow:0 12px 26px rgba(30,47,77,.24);
+    transition:transform .2s;
+  }
+  .btn-primary .go{
+    width:32px; height:32px; border-radius:50%;
+    background:var(--pastel); color:var(--navy);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .btn-primary:hover{ transform:translateY(-2px); }
+
+  .btn-play{ display:inline-flex; align-items:center; gap:11px; font-size:13.5px; font-weight:720; color:var(--navy); }
+  .btn-play .circle{
+    width:44px; height:44px; border-radius:50%;
+    border:1.5px dashed var(--navy);
+    display:flex; align-items:center; justify-content:center;
+    font-size:14px; transition:transform .3s;
+  }
+  .btn-play:hover .circle{ transform:rotate(90deg); }
+
+  
+  /* ===== HERO VISUAL ===== */
+  .hero-visual{ position:relative; height:520px; }
+  .backdrop-blob{
+    position:absolute; top:6%; right:2%; width:78%; height:88%;
+    background:var(--pastel); opacity:.55;
+    border-radius:38% 62% 63% 37% / 41% 44% 56% 59%;
+    transform:rotate(-6deg); z-index:0;
+  }
+  .photo-blob{
+    position:absolute; top:0; right:6%; width:72%; height:84%;
+    border-radius:63% 37% 54% 46% / 48% 41% 59% 52%;
+    overflow:hidden; z-index:2;
+    box-shadow:0 30px 50px -18px rgba(20,31,52,.35);
+    background:
+      radial-gradient(circle at 30% 20%, rgba(255,255,255,.4), transparent 45%),
+      linear-gradient(150deg, #cfe2ee 0%, #7ba6c4 55%, #3f6a89 100%);
+    /* swap this background for an <img> once real photography is ready */
+  }
+
+  .float-badge{
+    position:absolute; z-index:3; display:flex; align-items:center; gap:10px;
+    background:var(--white); border-radius:16px; padding:11px 15px;
+    box-shadow:0 16px 30px rgba(20,31,52,.16);
+    animation:bob 6s ease-in-out infinite;
+  }
+  .float-badge.b1{ top:6%; left:-2%; animation-delay:.2s; }
+  .float-badge.b2{ bottom:14%; right:-4%; animation-delay:1s; }
+  @keyframes bob{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-10px); } }
+  @media (prefers-reduced-motion:reduce){ .float-badge{ animation:none; } }
+  .float-badge .fi{
+    width:34px; height:34px; border-radius:10px;
+    background:var(--pastel); color:var(--navy);
+    display:flex; align-items:center; justify-content:center; font-size:16px; flex:none;
+  }
+  .float-badge b{ display:block; font-size:12.5px; color:var(--navy-deep); font-weight:800; }
+  .float-badge span{ font-size:10.5px; color:var(--warm-gray); font-weight:600; }
+
+ 
+  .t-pill{
+    display:flex; align-items:center; gap:8px;
+    padding:9px 20px; border-radius:999px;
+    font-size:12.5px; font-weight:700; white-space:nowrap;
+    border:1px solid rgba(30,47,77,.12); color:var(--navy);
+  }
+  .t-pill:nth-child(odd){ background:var(--bone); }
+  .t-pill:nth-child(even){ background:var(--pastel); border-color:transparent; }
+
+  @media (max-width:980px){
+    .hero{ grid-template-columns:1fr; }
+    .hero-visual{ height:400px; max-width:420px; margin:0 auto; }
+  }
+</style>
