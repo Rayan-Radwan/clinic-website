@@ -1,0 +1,71 @@
+---
+import logoMain from "../assets/LOGOTIPO PRINCIPAL.png";
+
+const navLinks = [
+  { label: "Inicio", href: "#", active: true },
+  { label: "La Clínica", href: "#equipo" },
+  { label: "Servicios", href: "#servicios" },
+  { label: "Financiación", href: "#financiacion" },
+  { label: "Contacto", href: "#contacto" },
+];
+---
+
+<div class="nav-wrap">
+  <div class="nav">
+    <a href="/" class="brand">
+      <img src={logoMain.src} alt="Clínica Dental Dra. Mª Jesús Crespo" class="brand-logo" />
+    </a>
+
+    <nav class="nav-pill">
+      {navLinks.map((link) => (
+        <a href={link.href} class:list={{ active: link.active }}>{link.label}</a>
+      ))}
+    </nav>
+
+    <a href="#contacto" class="nav-cta">
+      <i class="ti ti-calendar-heart"></i> Pide cita
+
+    </a>
+  </div>
+</div>
+
+<style>
+  .nav-wrap{
+    position:sticky; top:0; z-index:60; padding:18px 32px;
+    background:linear-gradient(var(--bone), rgba(245,241,234,.85) 70%, transparent);
+  }
+  .nav{
+    max-width:1240px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+.brand{ display:flex; align-items:center; }
+.brand-logo{ height:60px; width:auto; display:block; object-fit:contain; transform: translateY(6px); }
+ 
+
+  .nav-pill{
+    font-family: var(--font-display); display:flex; align-items:center; gap:6px;
+    background:var(--white); border:1px solid rgba(30,47,77,.08);
+    border-radius:999px; padding:6px;
+    box-shadow:0 8px 24px rgba(30,47,77,.06);
+  }
+  .nav-pill a{
+    font-family: var(--font-display); font-size:13px; font-weight:700; color:var(--navy); opacity:.65;
+    padding:9px 18px; border-radius:999px; transition:all .25s ease;
+  }
+  .nav-pill a:hover{ opacity:1; }
+  .nav-pill a.active{ opacity:1; background:var(--pastel); }
+
+  .nav-cta{
+    font-family: var(--font-display); display:flex; align-items:center; gap:8px;
+    background:var(--navy); color:var(--white);
+    padding:12px 22px; border-radius:999px;
+    font-size:13px; font-weight:600;
+    box-shadow:0 10px 22px rgba(30,47,77,.22);
+    transition:transform .2s;
+  }
+  .nav-cta:hover{ transform:translateY(-2px) rotate(-1deg); }
+
+  @media (max-width:980px){
+    .nav-pill{ display:none; }
+  }
+</style>
