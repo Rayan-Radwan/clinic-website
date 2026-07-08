@@ -1,0 +1,223 @@
+---
+const info = [
+  { icon: "ti-map-pin", label: "Dirección", value: "Av. de Gómez Ferrer, 49, Alfafar, Valencia" },
+  { icon: "ti-phone", label: "Teléfono", value: "+34 000 00 00 00" },
+  { icon: "ti-clock", label: "Horario", value: "Lun–Vie · 9:00–14:00 y 16:00–20:00" },
+];
+---
+
+<section class="contact" id="contacto">
+  <div class="contact-info">
+    <span class="tag-pill">
+      <span class="ic"><i class="ti ti-map-pin" style="font-size:11px"></i></span>
+      VISÍTANOS
+    </span>
+    <h2 class="c-h">Hablemos de tu <span class="highlight">sonrisa</span></h2>
+    <p class="c-p">
+      Escríbenos o pásate por la clínica — estaremos encantadas de
+      resolver tus dudas antes de tu primera visita.
+    </p>
+
+    <div class="visit-card">
+  <span class="visit-icon"><i class="ti ti-map-pin-filled"></i></span>
+  <div>
+    <p class="visit-label">Estamos en Alfafar</p>
+    <h3>Av. de Gómez Ferrer, 49</h3>
+    <p>Alfafar, Valencia</p>
+  </div>
+</div>
+
+    <ul class="info-stack">
+      {info.map((item) => (
+        <li>
+          <span class="info-ic"><i class={`ti ${item.icon}`}></i></span>
+          <div>
+            <b>{item.label}</b>
+            <p>{item.value}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <div class="social-row">
+      <a href="#" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+      <a href="#" aria-label="WhatsApp"><i class="ti ti-brand-whatsapp"></i></a>
+      <a href="#" aria-label="Email"><i class="ti ti-mail"></i></a>
+    </div>
+  </div>
+
+  <form class="contact-form">
+    <span class="form-badge"><i class="ti ti-send"></i> Te respondemos en menos de 24h</span>
+
+    <label>
+      Nombre
+      <input type="text" name="name" placeholder="Tu nombre" required />
+    </label>
+
+    <div class="row-2">
+      <label>
+        Teléfono
+        <input type="tel" name="phone" placeholder="600 000 000" />
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" placeholder="tu@email.com" required />
+      </label>
+    </div>
+
+    <label>
+      Mensaje
+      <textarea name="message" rows="4" placeholder="Cuéntanos qué necesitas..."></textarea>
+    </label>
+
+    <button type="submit" class="submit-btn"><span class="go"><i class="ti ti-arrow-up-right"></i></span>
+    Enviar mensaje</button>
+  </form>
+</section>
+
+<style>
+  .contact{
+    max-width:1240px; margin:0 auto; padding:80px 32px 100px;
+    display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;
+  }
+
+  .tag-pill{
+    font-family: var(--font-display); display:inline-flex; align-items:center; gap:8px;
+    background:var(--warm-gray-20, rgba(168,162,158,.15));
+    padding:8px 16px 8px 8px; border-radius:999px;
+    font-size:11.5px; font-weight:500; letter-spacing:.8px; color:var(--navy);
+    margin-bottom:20px;
+  }
+  .tag-pill .ic{
+    width:22px; height:22px; border-radius:50%; background:var(--pastel);
+    display:flex; align-items:center; justify-content:center; font-size:12px;
+  }
+
+  .c-h{
+    font-family:var(--font-serif); font-weight:500; letter-spacing:-1px;
+    font-size:clamp(28px,3.2vw,40px); line-height:1.2; color:var(--navy-deep); margin:0 0 16px;
+  }
+  .c-h .highlight{ color:var(--pastel-deep); }
+  .c-p{
+    font-family:var(--font-serif); font-size:15.5px; line-height:1.6;
+    color:#5b6577; max-width:420px; margin:0 0 30px;
+  }
+
+.visit-card{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:22px;
+  border-radius:22px;
+  margin-bottom:30px;
+  background:linear-gradient(135deg, rgba(184,212,227,.35), rgba(245,241,234,.9));
+  border:1px solid rgba(30,47,77,.1);
+}
+
+.visit-icon{
+  width:54px;
+  height:54px;
+  border-radius:18px;
+  background:var(--navy);
+  color:var(--white);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  flex:none;
+}
+
+.visit-label{
+  font-family:var(--font-display);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.8px;
+  color:var(--pastel-deep);
+  margin:0 0 5px;
+  text-transform:uppercase;
+}
+
+.visit-card h3{
+  font-family:var(--font-serif);
+  font-size:21px;
+  font-weight:500;
+  color:var(--navy-deep);
+  margin:0 0 4px;
+}
+
+.visit-card p{
+  font-family:var(--font-serif);
+  font-size:14.5px;
+  color:#5b6577;
+  margin:0;
+}
+
+  /* ===== INFO STACK ===== */
+  .info-stack{ list-style:none; margin:0 0 26px; padding:0; }
+  .info-stack li{ display:flex; gap:16px; padding:16px 0; border-bottom:1px solid rgba(30,47,77,.1); }
+  .info-stack li:first-child{ padding-top:0; }
+  .info-ic{
+    width:38px; height:38px; border-radius:11px; flex:none;
+    background:var(--pastel); color:var(--navy);
+    display:flex; align-items:center; justify-content:center; font-size:17px;
+  }
+  .info-stack b{ font-family:var(--font-display); font-size:11.5px; font-weight:800; letter-spacing:.3px; color:var(--warm-gray); display:block; margin-bottom:3px; }
+  .info-stack p{ font-family:var(--font-serif); font-size:14.5px; color:var(--navy-deep); margin:0; }
+
+  .social-row{ display:flex; gap:10px; }
+  .social-row a{
+    width:40px; height:40px; border-radius:50%;
+    border:1.5px solid rgba(30,47,77,.15); color:var(--navy);
+    display:flex; align-items:center; justify-content:center; font-size:17px;
+    transition:all .2s;
+  }
+  .social-row a:hover{ background:var(--navy); color:var(--white); border-color:var(--navy); }
+
+  /* ===== FORM ===== */
+  .contact-form{
+    background:var(--white); border:1px solid rgba(30,47,77,.08);
+    border-radius:26px; padding:36px 34px;
+    box-shadow:0 30px 60px -20px rgba(20,31,52,.18);
+    display:flex; flex-direction:column; gap:18px;
+  }
+  .form-badge{
+    display:inline-flex; align-items:center; gap:7px; align-self:flex-start;
+    font-family:var(--font-display); font-size:15px; font-weight:700; color:var(--pastel-deep);
+    background:rgba(184,212,227,.25); padding:7px 14px; border-radius:999px; margin-bottom:6px;
+  }
+  label{
+    display:flex; flex-direction:column; gap:8px;
+    font-family:var(--font-display); font-size:12.5px; font-weight:700; color:var(--navy-deep);
+  }
+  .row-2{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  input, textarea{
+    font-family:var(--font-serif); font-size:14.5px; color:var(--ink);
+    border:1.5px solid rgba(30,47,77,.14); border-radius:14px;
+    padding:13px 16px; background:var(--bone);
+    resize:none; transition:border-color .2s, background .2s;
+  }
+  input:focus, textarea:focus{
+    outline:none; border-color:var(--pastel-deep); background:var(--white);
+  }
+  input::placeholder, textarea::placeholder{ color:var(--warm-gray); font-style:italic; }
+
+  .submit-btn{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    background:var(--navy); color:var(--white); border:none; cursor:pointer;
+    padding:15px 12px 15px 26px; border-radius:999px;
+    font-family:var(--font-display); font-size:17px; font-weight:600;
+    box-shadow:0 12px 26px rgba(30,47,77,.24);
+    transition:transform .2s; margin-top:6px;
+  }
+  .submit-btn .go{
+    width:30px; height:30px; border-radius:50%;
+    background:var(--pastel); color:var(--navy);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .submit-btn:hover{ transform:translateY(-2px); }
+
+  @media (max-width:980px){
+    .contact{ grid-template-columns:1fr; gap:48px; }
+    .row-2{ grid-template-columns:1fr; }
+  }
+</style>
