@@ -1,0 +1,188 @@
+---
+const specialties = ["Odontología general", "Estética dental", "Endodoncia", "Odontopediatría"];
+
+const milestones = [
+  { year: "1996", text: "Apertura de la clínica en Alfafar, Valencia." },
+  { year: "2010", text: "Incorporación de tecnología digital de diagnóstico." },
+  { year: "Hoy", text: "Más de 5.000 sonrisas cuidadas, una a una." },
+];
+---
+
+<section class="doctor" id="equipo">
+  <div class="doctor-frame">
+    <div class="frame-backdrop"></div>
+    <div class="frame-photo">
+      <!-- swap this background for an <img> once the portrait is ready -->
+    </div>
+    <div class="credential-chip">
+      <span class="cc-num">30</span>
+      <span class="cc-label">años de<br />experiencia</span>
+    </div>
+  </div>
+
+  <div class="doctor-copy">
+    <span class="tag-pill">
+      <span class="ic"><i class="ti ti-stethoscope" style="font-size:11px"></i></span>
+      CONOCE A TU DENTISTA
+    </span>
+
+    <h2 class="doctor-name">Dra. Mª Jesús Crespo</h2>
+    <p class="doctor-role">Odontóloga · Directora clínica</p>
+
+    <div class="doctor-bio">
+      <span class="quote-mark">“</span>
+      <p>
+        Texto de biografía breve en español — trayectoria, filosofía de trato
+        cercano y compromiso con cada paciente. (Contenido final pendiente.)
+      </p>
+    </div>
+
+    <ul class="specialty-row">
+      {specialties.map((s) => (
+        <li>{s}</li>
+      ))}
+    </ul>
+
+    <ul class="timeline">
+      {milestones.map((m) => (
+        <li>
+          <span class="dot"></span>
+          <div class="tl-body">
+            <b>{m.year}</b>
+            <p>{m.text}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <a href="#contacto" class="btn-primary">
+      Reservar con la Dra. Crespo <span class="go"><i class="ti ti-arrow-up-right"></i></span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .doctor{
+    max-width:1240px; margin:0 auto; padding:80px 32px;
+    display:grid; grid-template-columns:0.82fr 1.18fr; gap:64px; align-items:start;
+  }
+
+  /* ===== PORTRAIT FRAME — deliberately not a blob, an offset architectural frame ===== */
+  .doctor-frame{ position:relative; height:520px; }
+  .frame-backdrop{
+    position:absolute; top:24px; left:-24px; width:100%; height:100%;
+    background:var(--pastel);
+    border-radius:160px 24px 24px 24px;
+    z-index:0;
+  }
+  .frame-photo{
+    position:relative; width:100%; height:100%;
+    border-radius:160px 24px 24px 24px;
+    overflow:hidden; z-index:1;
+    box-shadow:0 30px 50px -18px rgba(20,31,52,.32);
+    background:
+      radial-gradient(circle at 32% 18%, rgba(255,255,255,.4), transparent 45%),
+      linear-gradient(150deg, #cfe2ee 0%, #7ba6c4 55%, #3f6a89 100%);
+  }
+  .credential-chip{
+    position:absolute; bottom:-22px; right:-18px; z-index:2;
+    display:flex; align-items:center; gap:10px;
+    background:var(--navy); color:var(--white);
+    padding:14px 20px; border-radius:20px;
+    box-shadow:0 18px 32px rgba(20,31,52,.28);
+  }
+  .cc-num{
+    font-family:var(--font-serif); font-weight:600; font-size:30px; line-height:1;
+  }
+  .cc-label{
+    font-family:var(--font-display); font-size:10.5px; font-weight:700;
+    letter-spacing:.3px; line-height:1.25; opacity:.85;
+  }
+
+  /* ===== COPY ===== */
+  .tag-pill{
+    font-family: var(--font-display); display:inline-flex; align-items:center; gap:8px;
+    background:var(--warm-gray-20, rgba(168,162,158,.15));
+    padding:8px 16px 8px 8px; border-radius:999px;
+    font-size:11.5px; font-weight:500; letter-spacing:.8px; color:var(--navy);
+    margin-bottom:22px;
+  }
+  .tag-pill .ic{
+    width:22px; height:22px; border-radius:50%; background:var(--pastel);
+    display:flex; align-items:center; justify-content:center; font-size:12px;
+  }
+
+  .doctor-name{
+    font-family:var(--font-serif); font-weight:500; letter-spacing:-1px;
+    font-size:clamp(30px,3.4vw,42px); color:var(--navy-deep); margin:0 0 6px; line-height:1.1;
+  }
+  .doctor-role{
+    font-family:var(--font-display); font-size:13.5px; font-weight:700;
+    letter-spacing:.4px; color:var(--pastel-deep); margin:0 0 30px;
+  }
+
+  .doctor-bio{ position:relative; max-width:480px; margin:0 0 30px; }
+  .quote-mark{
+    position:absolute; top:-38px; left:-14px;
+    font-family:var(--font-serif); font-size:96px; line-height:1;
+    color:var(--pastel); opacity:.6; z-index:0; user-select:none;
+  }
+  .doctor-bio p{
+    position:relative; z-index:1;
+    font-family:var(--font-serif); font-size:16px; line-height:1.7;
+    color:#5b6577; margin:0;
+  }
+
+  .specialty-row{
+    display:flex; flex-wrap:wrap; gap:10px; margin:0 0 40px; padding:0;
+  }
+  .specialty-row li{
+    font-family:var(--font-display); font-size:12px; font-weight:700; color:var(--navy);
+    background:var(--white); border:1px solid rgba(30,47,77,.14);
+    padding:8px 16px; border-radius:999px;
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline{margin:0 0 40px; padding:0 0 0 4px; }
+  .timeline::before{
+    content:''; position:absolute; left:5px; top:6px; bottom:6px; width:1.5px;
+    background:rgba(30,47,77,.15);
+  }
+  .timeline li{ position:relative; display:flex; gap:20px; padding-left:26px; margin-bottom:22px; }
+  .timeline li:last-child{ margin-bottom:0; }
+  .timeline .dot{
+    position:absolute; left:0; top:4px; width:12px; height:12px; border-radius:50%;
+    background:var(--pastel-deep); border:2.5px solid var(--bone);
+    box-shadow:0 0 0 1.5px var(--pastel-deep);
+  }
+  .tl-body b{
+    font-family:var(--font-display); font-size:13px; font-weight:800; color:var(--navy-deep);
+    display:block; margin-bottom:3px;
+  }
+  .tl-body p{
+    font-family:var(--font-serif); font-size:14px; line-height:1.5; color:var(--warm-gray); margin:0;
+  }
+
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--navy); color:var(--white);
+    padding:15px 12px 15px 26px; border-radius:999px;
+    font-family:var(--font-display); font-size:14.5px; font-weight:800;
+    box-shadow:0 12px 26px rgba(30,47,77,.24);
+    transition:transform .2s;
+  }
+  .btn-primary .go{
+    width:32px; height:32px; border-radius:50%;
+    background:var(--pastel); color:var(--navy);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .btn-primary:hover{ transform:translateY(-2px); }
+
+  @media (max-width:980px){
+    .doctor{ grid-template-columns:1fr; gap:56px; }
+    .doctor-frame{ height:400px; max-width:340px; margin:0 auto; }
+    .frame-backdrop, .frame-photo{ border-radius:120px 20px 20px 20px; }
+    .doctor-copy{ text-align:left; }
+    .doctor-bio, .doctor-name, .doctor-role{ max-width:none; }
+  }
+</style>
