@@ -1,25 +1,26 @@
 ---
 import logoFooter from "../assets/LOGOTIPO V2.png";
 
+const whatsappHref = "https://wa.me/34963753800";
+const mapsHref = "https://www.google.com/maps/search/?api=1&query=Avenida+G%C3%B3mez+Ferrer+49+Alfafar+Valencia";
+
 const quickLinks = [
-  { label: "Inicio", href: "#" },
-  { label: "La Clínica", href: "#equipo" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Financiación", href: "#financiacion" },
-  { label: "Opiniones", href: "#testimonios" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Inicio", href: "/" },
+  { label: "La Clínica", href: "/la-clinica" },
+  { label: "Servicios", href: "/servicios" },
+  { label: "Financiación", href: "/financiacion" },
+  { label: "Opiniones", href: "/#testimonios" },
+  { label: "Contacto", href: "/contacto" },
 ];
 
 const serviceLinks = [
-  "Odontología conservadora",
-  "Odontopediatría",
-  "Endodoncia",
-  "Estética dental",
-  "Cirugía e implantes",
-  "Ortodoncia",
+  { label: "Odontología conservadora", slug: "odontologia" },
+  { label: "Odontopediatría", slug: "odontopediatria" },
+  { label: "Endodoncia", slug: "endodoncia" },
+  { label: "Estética dental", slug: "estetica-dental" },
+  { label: "Cirugía e implantes", slug: "cirugia-implantes" },
+  { label: "Ortodoncia", slug: "ortodoncia" },
 ];
-
-const legalLinks = ["Aviso legal", "Política de privacidad", "Política de cookies"];
 
 const year = new Date().getFullYear();
 ---
@@ -34,14 +35,9 @@ const year = new Date().getFullYear();
     class="footer-logo"
   />
 </div>
-      <p class="f-tag">
-        Tres décadas cuidando sonrisas en Alfafar, con un equipo cercano
-        que te explica cada paso con calma.
-      </p>
       <div class="f-social">
-        <a href="#" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
-        <a href="#" aria-label="WhatsApp"><i class="ti ti-brand-whatsapp"></i></a>
-        <a href="#" aria-label="Email"><i class="ti ti-mail"></i></a>
+        <a href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="ti ti-brand-whatsapp"></i></a>
+        <a href="mailto:info@clinicadentalmjcrespo.es" aria-label="Email"><i class="ti ti-mail"></i></a>
       </div>
     </div>
 
@@ -58,31 +54,45 @@ const year = new Date().getFullYear();
       <h3>Servicios</h3>
       <ul>
         {serviceLinks.map((s) => (
-          <li><a href="#servicios">{s}</a></li>
+          <li><a href={`/servicios#${s.slug}`}>{s.label}</a></li>
         ))}
       </ul>
     </div>
 
     <div class="f-col f-contact">
-      <h3>Visítanos</h3>
-      <ul class="contact-list">
-        <li><i class="ti ti-map-pin"></i> Av. de Gómez Ferrer, 49, Alfafar, Valencia</li>
-        <li><i class="ti ti-phone"></i> +34 000 00 00 00</li>
-        <li><i class="ti ti-clock"></i> Lun–Vie · 9:00–14:00 y 16:00–20:00</li>
+      <h3>Contacto</h3>
+      <ul class="brief-list">
+        <li>
+          <span class="bl-ic"><i class="ti ti-clock"></i></span>
+          <div><b>Horario</b><p>Lun–Vie · 10:00–14:00 y 16:00–20:00</p></div>
+        </li>
+        <li>
+          <a href="tel:+34963753800">
+            <span class="bl-ic"><i class="ti ti-phone"></i></span>
+            <div><b>Pide Cita</b><p>963 753 800</p></div>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:info@clinicadentalmjcrespo.es">
+            <span class="bl-ic"><i class="ti ti-mail"></i></span>
+            <div><b>Solicita más información</b><p>info@clinicadentalmjcrespo.es</p></div>
+          </a>
+        </li>
+        <li>
+          <a href={mapsHref} target="_blank" rel="noopener noreferrer">
+            <span class="bl-ic"><i class="ti ti-map-pin"></i></span>
+            <div><b>Cómo llegar</b><p>Ver en el mapa</p></div>
+          </a>
+        </li>
       </ul>
-      <a href="#contacto" class="f-cta">
-        Pedir cita <span class="go"><i class="ti ti-arrow-up-right"></i></span>
+      <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="f-cta">
+        Pide cita por WhatsApp <span class="go"><i class="ti ti-arrow-up-right"></i></span>
       </a>
     </div>
   </div>
 
   <div class="footer-bottom">
     <p>&copy; {year} Clínica Dental Dra. Mª Jesús Crespo. Todos los derechos reservados.</p>
-    <ul class="legal-links">
-      {legalLinks.map((l) => (
-        <li><a href="#">{l}</a></li>
-      ))}
-    </ul>
     <button type="button" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">
       <i class="ti ti-arrow-up"></i>
     </button>
@@ -98,8 +108,8 @@ const year = new Date().getFullYear();
 
   .footer-top{
     max-width:1240px; margin:0 auto;
-    display:grid; grid-template-columns:1.3fr 0.85fr 0.85fr 1fr; gap:48px;
-    padding-bottom:56px; border-bottom:1px solid rgba(255,255,255,.1);
+    display:grid; grid-template-columns:0.9fr 0.75fr 0.75fr 1.15fr; gap:40px;
+    padding-bottom:52px; border-bottom:1px solid rgba(255,255,255,.1);
   }
 
   .f-logo{
@@ -107,12 +117,8 @@ const year = new Date().getFullYear();
 }
 
 .footer-logo{ height:62px; width:auto; display:block;}
-f-tag{
-    font-family:var(--font-serif); font-size:14px; line-height:1.65;
-    color:rgba(255,253,250,.65); max-width:300px; margin:0 0 22px;
-  }
 
-  .f-social{ display:flex; gap:10px; }
+  .f-social{ display:flex; gap:10px; margin-top:22px; }
   .f-social a{
     width:38px; height:38px; border-radius:50%;
     border:1.5px solid rgba(255,255,255,.18); color:var(--white);
@@ -133,13 +139,27 @@ f-tag{
   }
   .f-col ul li a:hover{ color:var(--white); }
 
-  .contact-list{ gap:14px !important; margin-bottom:24px !important; }
-  .contact-list li{
-    display:flex; align-items:flex-start; gap:10px;
-    font-family:var(--font-serif); font-size:13.5px; line-height:1.5;
-    color:rgba(255,253,250,.75);
+  /* ===== brief-list: icon-chip rows, matching the icon language used site-wide ===== */
+  .brief-list{ gap:16px !important; margin-bottom:26px !important; }
+  .brief-list li{ display:flex; align-items:flex-start; gap:12px; }
+  .brief-list li a{
+    display:flex; align-items:flex-start; gap:12px; width:100%;
+    color:inherit; transition:opacity .2s;
   }
-  .contact-list i{ color:var(--pastel); font-size:16px; margin-top:1px; flex:none; }
+  .brief-list li a:hover{ opacity:.8; }
+  .bl-ic{
+    width:34px; height:34px; border-radius:10px; flex:none;
+    background:rgba(184,212,227,.16); color:var(--pastel);
+    display:flex; align-items:center; justify-content:center; font-size:15px;
+  }
+  .brief-list b{
+    display:block; font-family:var(--font-display); font-size:11px; font-weight:800;
+    letter-spacing:.4px; color:var(--pastel); text-transform:uppercase; margin-bottom:3px;
+  }
+  .brief-list p{
+    font-family:var(--font-serif); font-size:13.5px; line-height:1.4;
+    color:rgba(255,253,250,.8); margin:0;
+  }
 
   .f-cta{
     display:inline-flex; align-items:center; gap:8px;
@@ -163,12 +183,6 @@ f-tag{
   .footer-bottom p{
     font-family:var(--font-display); font-size:12px; color:rgba(255,253,250,.5); margin:0;
   }
-  .legal-links{ list-style:none; display:flex; gap:22px; margin:0; padding:0; }
-  .legal-links a{
-    font-family:var(--font-display); font-size:12px; color:rgba(255,253,250,.5);
-    transition:color .2s;
-  }
-  .legal-links a:hover{ color:var(--white); }
 
   .back-to-top{
     width:38px; height:38px; border-radius:50%; flex:none;

@@ -1,19 +1,16 @@
 ---
 const reviews = [
   {
-    quote: "Nos explicaron todo con muchísima calma, sin prisas ni tecnicismos. Se nota que llevan 30 años haciendo esto.",
-    name: "María G.",
-    treatment: "Ortodoncia",
+    quote: "Muy profesionales, trato excelente y muy atentas.",
+    name: "Jorge S.L.",
   },
   {
-    quote: "30 años cuidando a toda mi familia, no cambiaría de clínica por nada. Es como ir a ver a alguien de confianza.",
-    name: "Javier R.",
-    treatment: "Odontología general",
+    quote: "María Jesús es una gran profesional y su equipo muy atento. Siempre me han atendido super bien.",
+    name: "Raquel Hernández",
   },
   {
-    quote: "El trato es cercano de verdad, no solo de cara al público. Siempre me han hecho sentir escuchada.",
-    name: "Lucía M.",
-    treatment: "Estética dental",
+    quote: "Una clínica de confianza. Llevo yendo 10 años y María Jesús Crespo es muy profesional, cuesta encontrar a veces profesionales tan honrados y comprometidos.",
+    name: "Mara",
   },
 ];
 
@@ -26,23 +23,13 @@ function initials(name: string) {
 }
 ---
 
-<section class="testimonials">
+<section class="testimonials" id="testimonios">
   <div class="t-head">
-    <div>
-      <span class="tag-pill">
-        <span class="ic"><i class="ti ti-message-heart" style="font-size:11px"></i></span>
-        LO QUE DICEN NUESTROS PACIENTES
-      </span>
-      <h2 class="t-h">Confianza que se <span class="highlight">construye</span><br />visita tras visita</h2>
-    </div>
-
-    <div class="rating-card">
-      <div class="stars">
-        {[1, 2, 3, 4, 5].map(() => <i class="ti ti-star-filled"></i>)}
-      </div>
-      <div class="rating-num"><span class="num">4.9</span><span class="of5">/5</span></div>
-      <p class="rating-cap">+120 opiniones verificadas en Google</p>
-    </div>
+    <span class="tag-pill">
+      <span class="ic"><i class="ti ti-message-heart" style="font-size:11px"></i></span>
+      LO QUE DICEN NUESTROS PACIENTES
+    </span>
+    <h2 class="t-h">Reseñas reales, de pacientes reales</h2>
   </div>
 
   <ul class="review-grid">
@@ -54,7 +41,7 @@ function initials(name: string) {
           <span class="avatar">{initials(r.name)}</span>
           <div>
             <b>{r.name}</b>
-            <span>{r.treatment}</span>
+            <span class="google-seal"><i class="ti ti-brand-google"></i> Reseña de Google</span>
           </div>
         </div>
       </li>
@@ -65,16 +52,13 @@ function initials(name: string) {
 <style>
   .testimonials{ max-width:1240px; margin:0 auto; padding:80px 32px 100px; }
 
-  .t-head{
-    display:flex; justify-content:space-between; align-items:center; gap:40px;
-    margin-bottom:64px; flex-wrap:wrap;
-  }
+  .t-head{ margin-bottom:50px; }
   .tag-pill{
     font-family: var(--font-display); display:inline-flex; align-items:center; gap:8px;
-    background:var(--warm-gray-20, rgba(168,162,158,.15));
+    background:var(--warm-gray-20);
     padding:8px 16px 8px 8px; border-radius:999px;
-    font-size:11.5px; font-weight:500; letter-spacing:.8px; color:var(--navy);
-    margin-bottom:20px;
+    font-size:11.5px; font-weight:600; letter-spacing:.8px; color:var(--navy);
+    margin-bottom:18px;
   }
   .tag-pill .ic{
     width:22px; height:22px; border-radius:50%; background:var(--pastel);
@@ -84,18 +68,6 @@ function initials(name: string) {
     font-family:var(--font-serif); font-weight:500; letter-spacing:-1px;
     font-size:clamp(26px,3.2vw,38px); line-height:1.2; color:var(--navy-deep); margin:0;
   }
-  .t-h .highlight{ color:var(--pastel-deep); }
-
-  .rating-card{
-    background:var(--white); border:1px solid rgba(30,47,77,.08);
-    border-radius:22px; padding:22px 28px; text-align:center;
-    box-shadow:0 20px 40px rgba(30,47,77,.08); flex:none;
-  }
-  .stars{ display:flex; gap:3px; justify-content:center; color:var(--pastel-deep); font-size:14px; margin-bottom:10px; }
-  .rating-num{ display:flex; align-items:baseline; justify-content:center; gap:2px; }
-  .rating-num .num{ font-family:var(--font-serif); font-weight:600; font-size:36px; color:var(--navy-deep); }
-  .rating-num .of5{ font-family:var(--font-display); font-size:13px; font-weight:700; color:var(--warm-gray); }
-  .rating-cap{ font-family:var(--font-display); font-size:11px; font-weight:600; color:var(--warm-gray); margin:6px 0 0; white-space:nowrap; }
 
   .review-grid{
     list-style:none; margin:0; padding:0;
@@ -125,14 +97,18 @@ function initials(name: string) {
     width:40px; height:40px; border-radius:50%; flex:none;
     background:linear-gradient(160deg,var(--pastel),var(--pastel-deep));
     color:var(--navy-deep); display:flex; align-items:center; justify-content:center;
-    font-family:var(--font-display); font-size:13px; font-weight:800;
+    font-family:var(--font-display); font-size:13px; font-weight:700;
   }
   .review-footer b{ font-family:var(--font-display); font-size:13.5px; color:var(--navy-deep); display:block; }
-  .review-footer span{ font-family:var(--font-serif); font-style:italic; font-size:12px; color:var(--warm-gray); }
+  .google-seal{
+    display:inline-flex; align-items:center; gap:5px;
+    font-family:var(--font-display); font-size:11px; font-weight:600; color:var(--warm-gray);
+    margin-top:2px;
+  }
+  .google-seal i{ font-size:12px; }
 
   @media (max-width:980px){
     .review-grid{ grid-template-columns:1fr; }
     .offset-1, .offset-2{ margin-top:0; }
-    .t-head{ flex-direction:column; align-items:flex-start; }
   }
 </style>

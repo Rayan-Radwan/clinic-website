@@ -1,0 +1,186 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const whatsappHref = "https://wa.me/34963753800";
+const mapsHref = "https://www.google.com/maps/search/?api=1&query=Avenida+G%C3%B3mez+Ferrer+49+Alfafar+Valencia";
+---
+
+<Layout
+  title="Contacto | Clínica Dental Dra. Mª Jesús Crespo"
+  description="Pide tu cita o cuéntanos qué necesitas. Estamos en Avenida Gómez Ferrer, 49, Alfafar (Valencia)."
+>
+  <Navbar />
+
+  <section class="page-header">
+    <h1>Estamos aquí para ayudarte.</h1>
+    <p>Pide tu cita o cuéntanos qué necesitas.</p>
+  </section>
+
+  <section class="contact">
+    <div class="contact-info">
+      <h2>Escríbenos</h2>
+      <p class="intro">
+        Pide cita o solicita más información sobre alguno de nuestros tratamientos.
+        Nuestro equipo se pondrá en contacto contigo para resolver todas tus dudas.
+      </p>
+
+      <form class="contact-form">
+        <label>
+          Nombre
+          <input type="text" name="name" placeholder="Tu nombre" required />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" placeholder="tu@email.com" required />
+        </label>
+        <label>
+          Teléfono
+          <input type="tel" name="phone" placeholder="600 000 000" />
+        </label>
+        <label>
+          Mensaje
+          <textarea name="message" rows="4" placeholder="Cuéntanos qué necesitas..."></textarea>
+        </label>
+        <button type="submit" class="submit-btn">
+          Enviar mensaje <span class="go"><i class="ti ti-arrow-up-right"></i></span>
+        </button>
+      </form>
+    </div>
+
+    <div class="contact-aside">
+      <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="wa-card">
+        <span class="wa-icon"><i class="ti ti-brand-whatsapp"></i></span>
+        <div>
+          <b>WhatsApp</b>
+          <span>Respuesta rápida por chat</span>
+        </div>
+      </a>
+
+      <ul class="info-stack">
+        <li>
+          <span class="info-ic"><i class="ti ti-phone"></i></span>
+          <div><b>Teléfono</b><p><a href="tel:+34963753800">963 753 800</a></p></div>
+        </li>
+        <li>
+          <span class="info-ic"><i class="ti ti-clock"></i></span>
+          <div><b>Horario</b><p>Lunes a Viernes<br />10:00 a 14:00 y 16:00 a 20:00</p></div>
+        </li>
+        <li>
+          <span class="info-ic"><i class="ti ti-map-pin"></i></span>
+          <div><b>Dónde estamos</b><p>Avenida Gómez Ferrer, 49 Bajo, Alfafar (Valencia)</p></div>
+        </li>
+      </ul>
+
+      <div class="map-embed">
+        <iframe
+          src="https://maps.google.com/maps?q=Avenida+G%C3%B3mez+Ferrer+49+Alfafar+Valencia&output=embed"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Ubicación de la Clínica Dental Dra. Mª Jesús Crespo"
+        ></iframe>
+      </div>
+      <a href={mapsHref} target="_blank" rel="noopener noreferrer" class="map-cta">
+        <i class="ti ti-map-pin"></i> Cómo llegar <i class="ti ti-arrow-up-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-header{ max-width:640px; margin:0 auto; padding:56px 32px 20px; text-align:center; }
+  .page-header h1{
+    font-family:var(--font-serif); font-weight:500; letter-spacing:-1.1px;
+    font-size:clamp(28px,3.6vw,40px); color:var(--navy-deep); margin:0 0 12px;
+  }
+  .page-header p{ font-family:var(--font-serif); font-size:16px; color:#5b6577; margin:0; }
+
+  .contact{
+    max-width:1180px; margin:0 auto; padding:50px 32px 100px;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:start;
+  }
+
+  .contact-info h2{
+    font-family:var(--font-serif); font-weight:500; letter-spacing:-.8px;
+    font-size:26px; color:var(--navy-deep); margin:0 0 12px;
+  }
+  .intro{
+    font-family:var(--font-serif); font-size:15px; line-height:1.65; color:#5b6577; margin:0 0 30px;
+  }
+
+  .contact-form{ display:flex; flex-direction:column; gap:18px; }
+  label{
+    display:flex; flex-direction:column; gap:8px;
+    font-family:var(--font-display); font-size:12.5px; font-weight:700; color:var(--navy-deep);
+  }
+  input, textarea{
+    font-family:var(--font-serif); font-size:14.5px; color:var(--ink);
+    border:1.5px solid rgba(30,47,77,.14); border-radius:14px;
+    padding:13px 16px; background:var(--bone);
+    resize:none; transition:border-color .2s, background .2s;
+  }
+  input:focus, textarea:focus{ outline:none; border-color:var(--pastel-deep); background:var(--white); }
+  input::placeholder, textarea::placeholder{ color:var(--warm-gray); font-style:italic; }
+
+  .submit-btn{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    background:var(--navy); color:var(--white); border:none; cursor:pointer;
+    padding:15px 12px 15px 26px; border-radius:999px;
+    font-family:var(--font-display); font-size:14.5px; font-weight:800;
+    box-shadow:0 12px 26px rgba(30,47,77,.24); transition:transform .2s; margin-top:6px;
+  }
+  .submit-btn .go{
+    width:30px; height:30px; border-radius:50%;
+    background:var(--pastel); color:var(--navy);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .submit-btn:hover{ transform:translateY(-2px); }
+
+  /* ===== ASIDE ===== */
+  .wa-card{
+    display:flex; align-items:center; gap:14px;
+    background:#25D366; color:#fff; border-radius:20px; padding:20px;
+    margin-bottom:24px; transition:transform .2s;
+  }
+  .wa-card:hover{ transform:translateY(-2px); }
+  .wa-icon{ font-size:26px; }
+  .wa-card b{ display:block; font-family:var(--font-display); font-size:14.5px; }
+  .wa-card span{ font-family:var(--font-serif); font-style:italic; font-size:12.5px; opacity:.9; }
+
+  .info-stack{ list-style:none; margin:0 0 24px; padding:0; }
+  .info-stack li{ display:flex; gap:16px; padding:16px 0; border-bottom:1px solid rgba(30,47,77,.1); }
+  .info-stack li:first-child{ padding-top:0; }
+  .info-ic{
+    width:38px; height:38px; border-radius:11px; flex:none;
+    background:var(--pastel); color:var(--navy);
+    display:flex; align-items:center; justify-content:center; font-size:17px;
+  }
+  .info-stack b{ font-family:var(--font-display); font-size:11.5px; font-weight:800; letter-spacing:.3px; color:var(--warm-gray); display:block; margin-bottom:3px; }
+  .info-stack p{ font-family:var(--font-serif); font-size:14px; color:var(--navy-deep); margin:0; line-height:1.5; }
+  .info-stack p a{ color:inherit; }
+
+  .map-embed{
+    height:220px; border-radius:20px; overflow:hidden;
+    border:1px solid rgba(30,47,77,.1);
+  }
+  .map-embed iframe{ display:block; }
+
+  .map-cta{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    margin-top:14px; padding:13px; border-radius:14px;
+    background:var(--bone); border:1px solid rgba(30,47,77,.12);
+    font-family:var(--font-display); font-size:13px; font-weight:700; color:var(--navy);
+    transition:all .2s;
+  }
+  .map-cta:hover{ background:var(--pastel); border-color:transparent; }
+
+  @media (max-width:900px){
+    .contact{ grid-template-columns:1fr; gap:44px; }
+  }
+</style>

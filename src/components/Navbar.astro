@@ -1,13 +1,20 @@
 ---
 import logoMain from "../assets/LOGOTIPO PRINCIPAL.png";
 
+
+const whatsappHref = "https://wa.me/34963753800";
+
 const navLinks = [
-  { label: "Inicio", href: "#", active: true },
-  { label: "La Clínica", href: "#equipo" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Financiación", href: "#financiacion" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Inicio", href: "/" },
+  { label: "La Clínica", href: "/la-clinica" },
+  { label: "Servicios", href: "/servicios" },
+  { label: "Financiación", href: "/financiacion" },
+  { label: "Contacto", href: "/contacto" },
 ];
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/" ? currentPath === "/" : currentPath.startsWith(href);
 ---
 
 <div class="nav-wrap">
@@ -18,13 +25,12 @@ const navLinks = [
 
     <nav class="nav-pill">
       {navLinks.map((link) => (
-        <a href={link.href} class:list={{ active: link.active }}>{link.label}</a>
+        <a href={link.href} class:list={{ active: isActive(link.href) }}>{link.label}</a>
       ))}
     </nav>
 
-    <a href="#contacto" class="nav-cta">
-      <i class="ti ti-calendar-heart"></i> Pide cita
-
+    <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="nav-cta">
+      <i class="ti ti-brand-whatsapp"></i> Pide cita
     </a>
   </div>
 </div>

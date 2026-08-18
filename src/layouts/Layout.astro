@@ -1,15 +1,42 @@
 ---
 import "../styles/global.css";
+import WhatsAppFloat from "../components/WhatsAppFloat.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Clínica Dental Dra. Mª Jesús Crespo | Alfafar, Valencia",
+  description = "Clínica dental en Alfafar con 30 años de experiencia. Odontología, ortodoncia, estética dental, implantes y más. Pide tu cita.",
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Clínica Dental</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.46.0/tabler-icons.min.css"
+    />
+
+    <title>{title}</title>
   </head>
   <body>
     <slot />
+    <WhatsAppFloat />
   </body>
 </html>

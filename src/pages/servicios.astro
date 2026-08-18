@@ -1,0 +1,163 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const whatsappHref = "https://wa.me/34963753800";
+
+const services = [
+  {
+    slug: "odontologia",
+    icon: "ti-tooth",
+    title: "Odontología Conservadora",
+    text: "Cuidamos y reparamos tus dientes evitando extraerlos siempre que se puede. Tratamos las caries a tiempo y reconstruimos los dientes dañados con empastes, reconstrucciones y carillas de composite o cerámica, para un resultado natural y duradero.",
+  },
+  {
+    slug: "odontopediatria",
+    icon: "ti-mood-kid",
+    title: "Odontopediatría",
+    text: "La odontología de los más pequeños. Cuidamos la boca de niños y jóvenes hasta los 18 años —y acompañamos a las futuras mamás— en un ambiente tranquilo para que ir al dentista nunca dé miedo. Revisiones, prevención y detección temprana de caries y anomalías.",
+  },
+  {
+    slug: "endodoncia",
+    icon: "ti-first-aid-kit",
+    title: "Endodoncia",
+    text: 'Lo que se conoce como "matar el nervio". Cuando una caries profunda o un golpe dañan el interior del diente, retiramos la parte afectada y lo sellamos para conservarlo: quitamos el dolor y la infección sin tener que extraerlo.',
+  },
+  {
+    slug: "estetica-dental",
+    icon: "ti-sparkles",
+    title: "Estética dental",
+    text: "Tratamientos para mejorar tu sonrisa cuidando siempre la salud de tu boca: blanqueamiento dental, carillas y cirugía estética de encías. Para que tengas una sonrisa que te apetezca enseñar.",
+  },
+  {
+    slug: "cirugia-implantes",
+    icon: "ti-vaccine-bottle",
+    title: "Cirugía e implantes",
+    text: "Cuando ya no es posible conservar un diente, reponemos los que faltan con implantes: una raíz de titanio que se integra en el hueso y sostiene un diente nuevo fijo. Soluciones fijas, cómodas y naturales, con una intervención sencilla e indolora.",
+  },
+  {
+    slug: "ortodoncia",
+    icon: "ti-align-center",
+    title: "Ortodoncia",
+    text: "Alineamos tus dientes a cualquier edad, por salud y por estética. Corregimos dientes apiñados, separaciones y problemas de mordida con aparatología fija (metálica o estética) o removible, según tu caso.",
+  },
+];
+---
+
+<Layout
+  title="Servicios | Clínica Dental Dra. Mª Jesús Crespo"
+  description="Odontología conservadora, odontopediatría, endodoncia, estética dental, cirugía e implantes, ortodoncia. Tratamientos pensados para cada sonrisa."
+>
+  <Navbar />
+
+  <!-- ===== PAGE HEADER ===== -->
+  <section class="page-header">
+    <h1>Tratamientos pensados para cada sonrisa</h1>
+    <p>Desde la prevención hasta los tratamientos más completos, te acompañamos en todo lo que tu boca necesita.</p>
+    <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="btn-primary">
+      <i class="ti ti-brand-whatsapp"></i> Solicita más información
+    </a>
+  </section>
+
+  <!-- ===== STICKY INDEX (useful on mobile) ===== -->
+  <nav class="index-nav">
+    <ul>
+      {services.map((s) => (
+        <li><a href={`#${s.slug}`}>{s.title.split(" ")[0]}</a></li>
+      ))}
+    </ul>
+  </nav>
+
+  <!-- ===== TREATMENT BLOCKS ===== -->
+  {services.map((s, i) => (
+    <section id={s.slug} class:list={["treatment-block", { alt: i % 2 === 1 }]}>
+      <div class="tb-inner">
+        <div class="tb-photo">
+          <!-- swap for a real treatment photo once ready -->
+        </div>
+        <div class="tb-copy">
+          <span class="tb-icon"><i class={`ti ${s.icon}`}></i></span>
+          <h2>{s.title}</h2>
+          <p>{s.text}</p>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ===== PAGE HEADER ===== */
+  .page-header{ max-width:720px; margin:0 auto; padding:56px 32px 32px; text-align:center; }
+  .page-header h1{
+    font-family:var(--font-serif); font-weight:500; letter-spacing:-1.2px;
+    font-size:clamp(28px,4vw,42px); line-height:1.15; color:var(--navy-deep); margin:0 0 14px;
+  }
+  .page-header p{
+    font-family:var(--font-serif); font-size:16px; line-height:1.6; color:#5b6577; margin:0 0 28px;
+  }
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:10px;
+    background:#25D366; color:#fff; padding:14px 24px; border-radius:999px;
+    font-family:var(--font-display); font-size:14px; font-weight:700;
+    box-shadow:0 12px 26px rgba(37,211,102,.24); transition:transform .2s;
+  }
+  .btn-primary:hover{ transform:translateY(-2px); }
+
+  /* ===== INDEX NAV ===== */
+  .index-nav{
+    position:sticky; top:78px; z-index:40;
+    background:rgba(245,241,234,.92); backdrop-filter:blur(10px);
+    border-top:1px solid rgba(30,47,77,.1); border-bottom:1px solid rgba(30,47,77,.1);
+    margin-bottom:10px;
+  }
+  .index-nav ul{
+    max-width:1240px; margin:0 auto; padding:14px 32px;
+    display:flex; gap:10px; overflow-x:auto; list-style:none;
+  }
+  .index-nav a{
+    font-family:var(--font-display); font-size:12.5px; font-weight:700; color:var(--navy);
+    background:var(--white); border:1px solid rgba(30,47,77,.12);
+    padding:8px 16px; border-radius:999px; white-space:nowrap; transition:all .2s;
+  }
+  .index-nav a:hover{ background:var(--pastel); border-color:transparent; }
+
+  /* ===== TREATMENT BLOCKS ===== */
+  .treatment-block{ padding:70px 32px; scroll-margin-top:130px; }
+  .treatment-block.alt{ background:#e7eef3; }
+
+  .tb-inner{
+    max-width:1080px; margin:0 auto;
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;
+  }
+  .treatment-block:nth-child(odd) .tb-inner{ direction:rtl; }
+  .treatment-block:nth-child(odd) .tb-inner > *{ direction:ltr; }
+
+  .tb-photo{
+    height:280px; border-radius:26px;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(255,255,255,.4), transparent 45%),
+      linear-gradient(150deg, #cfe2ee 0%, #7ba6c4 55%, #3f6a89 100%);
+    box-shadow:0 24px 44px -16px rgba(20,31,52,.28);
+  }
+
+  .tb-icon{
+    display:flex; align-items:center; justify-content:center;
+    width:48px; height:48px; border-radius:14px;
+    background:var(--navy); color:var(--white); font-size:22px; margin-bottom:20px;
+  }
+  .tb-copy h2{
+    font-family:var(--font-serif); font-weight:500; letter-spacing:-.8px;
+    font-size:clamp(22px,2.6vw,30px); color:var(--navy-deep); margin:0 0 16px;
+  }
+  .tb-copy p{
+    font-family:var(--font-serif); font-size:15.5px; line-height:1.75; color:#4a5468; max-width:520px; margin:0;
+  }
+
+  @media (max-width:900px){
+    .tb-inner{ grid-template-columns:1fr; direction:ltr !important; }
+    .tb-photo{ height:220px; }
+  }
+</style>
